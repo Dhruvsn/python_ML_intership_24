@@ -1,0 +1,111 @@
+Q1.
+n = 5
+for i in range(n):
+    spaces = ' ' * (n - i - 1)
+    stars = '*' * (i + 1)
+    print(spaces + stars)
+#--------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Q2.WAP that take two number as user input and performs division.Handle the ArithmeticException that might occur if the user attempts to divide by zero and 
+# any potential NumberFormatExeption that might occur during the conversion. In such cases,inform the user about the error and ask for input again.
+
+# def perform_division():
+#     while True:
+#         try:
+#             num1 = float(input("Enter the first number: "))
+#             num2 = float(input("Enter the second number: "))
+#             result = num1 / num2  
+#             print(f"The result of {num1} divided by {num2} is {result:.2f}")
+#             break  
+#         except ZeroDivisionError:
+#             print("Error: Division by zero is not allowed. Please try again.")
+#         except ValueError:
+#             print("Error: Invalid Input!")
+
+# if __name__ == "__main__":
+#     perform_division()
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Q3.
+# Create a class Equipment that stores
+# Eid,Ename,Brand,Total qty,Aval Eqy.
+# Add Equipment To stock
+# Delete Equipment From stock
+# updata the quantity. print the list of Availabe Equipments.
+#create a new Dictionary that stores the record of students who take the sports Equipment adn name is as Rental. Dictionary Contains:Name,Rollno
+#Eid,Ename,status,Return condition 
+# Create two function as Rent_item and Return_item
+# Rent_item= this function will generate the new Record to the dictionary Rental and fill all the details and mark the condition as good and status as Rented.
+# Return_item = this function will mark the status as Returned if student return the item and also mention the condition as (good or Damaged).
+
+
+class Equipment:
+    def __init__(self):
+        self.stock = {
+            'Eid': [],
+            'Ename': [],
+            'Brand': [],
+            'Total_qty':# Create a class Equipment that stores
+# Eid,Ename,Brand,Total qty,Aval Eqy.
+# Add Equipment To stock
+# Delete Equipment From stock
+# updata the quantity. print the list of Availabe Equipments.
+#create a new Dictionary that stores the record of students who take the sports Equipment adn name is as Rental. Dictionary Contains:Name,Rollno
+#Eid,Ename,status,Return condition 
+# Create two function as Rent_item and Return_item
+# Rent_item= this function will generate the new Record to the dictionary Rental and fill all the details and mark the condition as good and status as Rented.
+# Return_item = this function will mark the status as Returned if student return the item and also mention the condition as (good or Damaged).
+
+
+class Equipment:
+    def __init__(self):
+        self.stock = {
+            'Eid': [],
+            'Ename': [],
+            'Brand': [], [],
+            'Avail_qty': []
+        }
+        self.rental = {}  # Dictionary to store rental records
+
+    def add_equipment(self, eid, ename, brand, total_qty):
+        self.stock['Eid'].append(eid)
+        self.stock['Ename'].append(ename)
+        self.stock['Brand'].append(brand)
+        self.stock['Total_qty'].append(total_qty)
+        self.stock['Avail_qty'].append(total_qty)
+        print(f"Equipment {ename} added to stock.")
+        print("\n")
+
+    def delete_equipment(self, eid):
+        try:
+            index = self.stock['Eid'].index(eid)
+            for key in self.stock.keys():
+                self.stock[key].pop(index)
+            print(f"Equipment with ID {eid} deleted from stock.")
+        except ValueError:
+            print("Equipment ID not found.")
+
+    def update_quantity(self, eid, new_qty):
+        try:
+            index = self.stock['Eid'].index(eid)
+            self.stock['Total_qty'][index] = new_qty
+            self.stock['Avail_qty'][index] = new_qty
+            print(f"Quantity for equipment ID {eid} updated to {new_qty}.")
+        except ValueError:
+            print("Equipment ID not found.")
+
+    def print_available_equipment(self):
+        print("Available Equipment:")
+        print(self.stock)
+       
+
+equip_manager = Equipment()
+equip_manager.add_equipment('001', 'Basketball', 'Nike', 10)
+equip_manager.print_available_equipment()
+
+
+
+
+
+         
+    
