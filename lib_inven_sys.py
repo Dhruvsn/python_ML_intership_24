@@ -1,8 +1,10 @@
 import pandas as pd
 
+# Dictionaries to store book inventory and rental records
 Inventory = {}
 record = {}
 
+# Create Book class to Add, Remove, Update, and Print data
 class Book:
     def __init__(self):
         self.book_id = 0
@@ -10,6 +12,7 @@ class Book:
         self.total_qty = 0
         self.available_qty = 0
   
+    # Function to add a new book to the Inventory dictionary
     def add_book(self):
         self.book_id = int(input("Enter the book id: "))
         self.title = input("Enter the Book name: ")
@@ -17,7 +20,8 @@ class Book:
         self.available_qty = self.total_qty
         Inventory[self.book_id] = [self.title, self.total_qty, self.available_qty]
         print("Book added successfully!\n")
-  
+
+    # Function to remove a book from the Inventory dictionary
     def remove_book(self):
         self.book_id = int(input("Enter the book id you want to remove: "))
         if self.book_id in Inventory:
@@ -26,6 +30,7 @@ class Book:
         else:
             print("Book not found")
 
+    # Function to update the quantity of a book in the Inventory dictionary
     def update_book(self):
         self.book_id = int(input("Enter the book id you want to update: "))
         if self.book_id in Inventory:
@@ -37,6 +42,7 @@ class Book:
         else:
             print("Book not found!")
 
+    # Function to print the current inventory of books in a tabular format
     def print_books(self):
         if Inventory:
             df = pd.DataFrame.from_dict(Inventory, orient='index', columns=['Title', 'Total Quantity', 'Available Quantity'])
@@ -44,7 +50,7 @@ class Book:
         else:
             print("No stock available.")
 
-
+# Record class to save the record of students who rent or return books
 class Record:
     def __init__(self):
         self.name = ""
@@ -54,6 +60,7 @@ class Record:
         self.status = ""
         self.condition = ""
 
+    # Function to rent a book and update the record and inventory
     def rent_book(self):
         self.name = input("Enter your name: ")
         self.roll_no = input("Enter your Roll number: ")
@@ -68,6 +75,7 @@ class Record:
         else:
             print("Item not available or invalid Book ID.")
 
+    # Function to return a book and update the record and inventory
     def return_book(self):
         self.roll_no = input("Enter your Roll number: ")
         self.condition = input("Enter the returned condition (Good/Damaged): ")
@@ -90,6 +98,7 @@ class Record:
         else:
             print("Record not found for the given Roll number.")
 
+    # Function to print all rental records in a tabular format
     def print_records(self):
         if record:
             df = pd.DataFrame.from_dict(record, orient='index', columns=['Name', 'Book ID', 'Book Name', 'Status', 'Condition'])
@@ -97,7 +106,7 @@ class Record:
         else:
             print("No records available.")
 
-
+# Function to manage the book inventory
 def management_system():
     book_obj = Book()
     while True:
@@ -122,7 +131,7 @@ def management_system():
         else:
             print("Invalid input!")
 
-
+# Main function to display the main menu and handle user choices
 def main():
     book_obj = Book()
     record_obj = Record()
@@ -132,22 +141,4 @@ def main():
         print("2. Rent Book")
         print("3. Return Book")
         print("4. Print Records")
-        print("5. Exit")
-        choice = int(input("Enter your choice: "))
-
-        if choice == 1:
-            management_system()
-        elif choice == 2:
-            record_obj.rent_book()
-        elif choice == 3:
-            record_obj.return_book()
-        elif choice == 4:
-            record_obj.print_records()
-        elif choice == 5:
-            break
-        else:
-            print("Invalid input!")
-
-
-if __name__ == "__main__":
-    main()
+        print(
